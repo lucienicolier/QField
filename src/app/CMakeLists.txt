@@ -1,5 +1,11 @@
 find_package(Qt5QuickCompiler QUIET)
 
+if(NOT Qt5QuickCompiler_FOUND
+   OR CMAKE_BUILD_TYPE MATCHES Debug
+   OR CMAKE_BUILD_TYPE MATCHES RelWithDebInfo)
+  set(RESOURCES ${CMAKE_SOURCE_DIR}/src/qml/qml.qrc)
+endif()
+
 if(MSVC)
   configure_file("${CMAKE_SOURCE_DIR}/platform/windows/appicon.rc.in"
                  "${CMAKE_CURRENT_BINARY_DIR}/appicon.rc")
