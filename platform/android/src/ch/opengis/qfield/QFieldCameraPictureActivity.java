@@ -59,6 +59,20 @@ public class QFieldCameraPictureActivity extends Activity {
         return;
     }
 
+    private Intent enhanceCameraIntent(Intent takePictureIntent) {
+        Intent ocIntent = new Intent(takePictureIntent)
+                              .setPackage("net.sourceforge.opencamera");
+        if (!this.getApplicationContext()
+                 .getPackageManager()
+                 .queryIntentActivities(ocIntent, 0)
+                 .isEmpty()) {
+            Intent[] extraInitialIntents = {ocIntent};
+            return Intent.createChooser(takePictureIntent, "Camera")
+                .putExtra(Intent.EXTRA_INITIAL_INTENTS, ocIntent);
+        }
+        return takePictureIntent;
+    }
+
     private void callCameraIntent() {
         Log.d(TAG, "callCameraIntent()");
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -84,7 +98,9 @@ public class QFieldCameraPictureActivity extends Activity {
                     Log.d(TAG, "uri: " + photoURI.toString());
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
                                                photoURI);
-                    startActivityForResult(takePictureIntent, CAMERA_ACTIVITY);
+                    startActivityForResult(
+                        this.enhanceCameraIntent(takePictureIntent),
+                        CAMERA_ACTIVITY);
                 }
             } catch (IOException e) {
                 Log.d(TAG, e.getMessage());
