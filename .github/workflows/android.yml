@@ -28,7 +28,8 @@ jobs:
             all_files_access: 'OFF'
 
     env:
-      ANDROID_NDK_VERSION: '23.2.8568313'
+      ANDROID_NDK_VERSION: '24.0.8215888'
+      ANDROID_NDK_HOME: '/usr/local/lib/android/sdk/ndk/24.0.8215888'
       ANDROID_BUILD_TOOLS_VERSION: '33.0.0'
 
 
