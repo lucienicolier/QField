@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - release-**
+      - oc
   pull_request:
   release:
     types: ['published', 'released']
