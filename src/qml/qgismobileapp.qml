@@ -2996,7 +2996,7 @@ ApplicationWindow {
 
   BarcodeReader {
     id: barcodeReader
-    visible: true
+    visible: false
   }
 
   DropArea {
