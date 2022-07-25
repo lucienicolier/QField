@@ -2996,12 +2996,7 @@ ApplicationWindow {
 
   BarcodeReader {
     id: barcodeReader
-
-    property int itemSize: mainWindow.width <= mainWindow.height ? mainWindow.width - 80 : mainWindow.height - 80
-
-    anchors.centerIn: parent
-    width: itemSize
-    height: itemSize
+    visible: true
   }
 
   DropArea {
