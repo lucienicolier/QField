@@ -13,6 +13,7 @@ Popup {
 
   signal decoded(var string)
 
+  property var barcodeRequestedItem: undefined
   property int popupWidth: mainWindow.width <= mainWindow.height ? mainWindow.width - 40 : mainWindow.height - 40
 
   width: popupWidth
@@ -257,8 +258,13 @@ Popup {
           opacity: enabled ? 1 : 0.2
 
           onClicked: {
+            if (barcodeReader.barcodeRequestedItem != undefined) {
+                barcodeReader.barcodeRequestedItem.requestedBarcode(barcodeDecoder.decodedString)
+                barcodeReader.barcodeRequestedItem = undefined;
+            } else {
+                barcodeReader.decoded(barcodeDecoder.decodedString);
+            }
             barcodeReader.close();
-            barcodeReader.decoded(barcodeDecoder.decodedString);
           }
         }
       }
