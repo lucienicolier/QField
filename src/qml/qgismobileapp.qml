@@ -1937,8 +1937,9 @@ ApplicationWindow {
       id: copyCoordinatesItem
       text: qsTr( "Copy Coordinates" )
       height: 48
-      leftPadding: 50
+      leftPadding: 10
       font: Theme.defaultFont
+      icon.source: Theme.getThemeVectorIcon( "ic_copy_black_24dp" )
 
       onTriggered: {
         var displayPoint = projectInfo.reprojectDisplayCoordinatesToWGS84
@@ -2256,8 +2257,9 @@ ApplicationWindow {
     MenuItem {
       text: qsTr( "Copy Location Coordinates" )
       height: 48
-      leftPadding: 50
+      leftPadding: 10
       font: Theme.defaultFont
+      icon.source: Theme.getThemeVectorIcon( "ic_copy_black_24dp" )
 
       onTriggered: {
         if (!positioningSettings.positioningActivated || positionSource.positionInformation === undefined || !positionSource.positionInformation.latitudeValid) {
