@@ -45,7 +45,8 @@ Drawer {
 
     Rectangle {
       Layout.fillWidth: true
-      height: mainWindow.sceneTopMargin + 56
+      height: mainWindow.sceneTopMargin + buttonsRow.height
+      Layout.preferredHeight: height
 
       color: mainColor
 
