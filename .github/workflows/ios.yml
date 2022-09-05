@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      - sizzlemore
       - release-**
   pull_request:
   release:
