@@ -6,6 +6,7 @@ on:
     branches:
       - master
       - release-**
+      - ios_x64
   pull_request:
   release:
     types: ['published']
@@ -17,7 +18,7 @@ jobs:
       DEPLOYMENT_TARGET: '12.0'
       QT_VERSION: '5.15.2'
       BUILD_TYPE: 'Release'
-      TRIPLET: 'arm64-ios'
+      TRIPLET: 'x64-ios'
 
     steps:
       - name: 🐣 Checkout
