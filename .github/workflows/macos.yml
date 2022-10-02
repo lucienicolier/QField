@@ -47,8 +47,8 @@ jobs:
 
       - uses: Apple-Actions/import-codesign-certs@v1
         with:
-          p12-file-base64: ${{ secrets.IOS_CERTIFICATES_FILE_BASE64_DEV }}
-          p12-password: ${{ secrets.IOS_CERTIFICATES_PASSWORD_DEV }}
+          p12-file-base64: ${{ secrets.DEVELOPER_ID_CERT_BASE64 }}
+          p12-password: ${{ secrets.DEVELOPER_ID_PASS }}
 
       - uses: Apple-Actions/download-provisioning-profiles@v1
         with:
@@ -112,13 +112,13 @@ jobs:
               echo "ARTIFACT_PATHNAME=${{ env.CMAKE_BUILD_DIR }}/QField-Installer.dmg" >> $GITHUB_ENV
               echo "ARTIFACT_NAME=${{ steps.vars.outputs.CI_PACKAGE_FILE_BASENAME }}-macos.dmg" >> $GITHUB_ENV
 
-#      - name: 🔒 Notarize Release Build
-#        uses: m-kuhn/notarize-build@main
-#        with:
-#          app-path: ${{ env.ARTIFACT_PATHNAME }}
-#          issuer-id: ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
-#          api-key-id: ${{ secrets.IOS_APPSTORE_KEY_ID }}
-#          api-private-key: ${{ secrets.IOS_APPSTORE_PRIVATE_KEY }}
+      - name: 🔒 Notarize Release Build
+        uses: m-kuhn/notarize-build@main
+        with:
+          app-path: ${{ env.ARTIFACT_PATHNAME }}
+          issuer-id: ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.IOS_APPSTORE_KEY_ID }}
+          api-private-key: ${{ secrets.IOS_APPSTORE_PRIVATE_KEY }}
 
       - name: 📑 Upload package logs
         uses: actions/upload-artifact@v3
