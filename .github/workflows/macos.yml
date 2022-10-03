@@ -102,7 +102,7 @@ jobs:
 
       - name: 🌋 Build
         run: |
-          cmake --build "${{ env.CMAKE_BUILD_DIR }}" --config ${{ env.BUILD_TYPE }}
+          cmake --build "${{ env.CMAKE_BUILD_DIR }}" --config ${{ env.BUILD_TYPE }} -- -parallelizeTargets OTHER_CODE_SIGN_FLAGS="--timestamp"
 
       - name: 🧫 Test
         env:
@@ -173,4 +173,8 @@ jobs:
 
       - name: Debug
         if: failure()
+        env:
+          issuer_id: ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
+          api_key_id: ${{ secrets.IOS_APPSTORE_KEY_ID }}
+          api_private_key: ${{ secrets.IOS_APPSTORE_PRIVATE_KEY }}
         uses: m-kuhn/action-tmate@patch-1
