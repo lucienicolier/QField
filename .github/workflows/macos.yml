@@ -89,7 +89,7 @@ jobs:
                 -D NUGET_TOKEN=${{ secrets.GITHUB_TOKEN }} \
                 -D SENTRY_DSN=${{ secrets.SENTRY_DSN }} \
                 -D SENTRY_ENV="${APP_ENV}" \
-                -D MACOS_CODE_SIGN_IDENTITY="${{ secrets.IOS_CODE_SIGN_IDENTITY_DEV }}" \
+                -D MACOS_CODE_SIGN_IDENTITY="${{ secrets.MACOS_CODE_SIGN_IDENTITY }}" \
                 -D CMAKE_CXX_VISIBILITY_PRESET=hidden
 
       - name: 📑 Upload dep build logs
