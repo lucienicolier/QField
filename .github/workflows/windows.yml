@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - release-**
+      - clang-cl
   pull_request:
   release:
     types: ['published']
