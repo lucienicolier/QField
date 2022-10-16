@@ -59,7 +59,7 @@ jobs:
           cmake -S "${SOURCE_DIR}" \
                 -B "${CMAKE_BUILD_DIR}" \
                 -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
-                -D VCPKG_TARGET_TRIPLET="x64-windows-static" \
+                -D VCPKG_TARGET_TRIPLET="x64-win-llvm-static-md-release" \
                 -D WITH_VCPKG=ON \
                 -D WITH_SPIX=ON \
                 -D APP_VERSION="${APP_VERSION}" \
