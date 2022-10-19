@@ -16,8 +16,8 @@
 #ifndef BLUETOOTHRECEIVER_H
 #define BLUETOOTHRECEIVER_H
 
-#include "abstractgnssreceiver.h"
 #include "gnsspositioninformation.h"
+#include "nmeagnssreceiver.h"
 #include "qgsnmeaconnection.h"
 
 #include <QObject>
@@ -28,7 +28,7 @@
  * The bluetoothreceiver connects to a device and feeds the QgsNmeaConnection over QBluetoothSocket.
  * It receives QgsGpsInformation and converts it to GnssPositionInformation
  */
-class BluetoothReceiver : public AbstractGnssReceiver
+class BluetoothReceiver : public NmeaReceiver
 {
     Q_OBJECT
 
@@ -78,7 +78,6 @@ class BluetoothReceiver : public AbstractGnssReceiver
 
     std::unique_ptr<QBluetoothLocalDevice> mLocalDevice;
     QBluetoothSocket *mSocket = nullptr;
-    std::unique_ptr<QgsNmeaConnection> mGpsConnection;
     bool mLastGnssPositionValid = false;
 
     bool mDisconnecting = false;

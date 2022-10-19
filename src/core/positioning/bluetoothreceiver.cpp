@@ -20,11 +20,10 @@
 #include <QSettings>
 
 BluetoothReceiver::BluetoothReceiver( const QString &address, QObject *parent )
-  : AbstractGnssReceiver( parent )
+  : NmeaReceiver( parent )
   , mAddress( address )
   , mLocalDevice( std::make_unique<QBluetoothLocalDevice>() )
   , mSocket( new QBluetoothSocket( QBluetoothServiceInfo::RfcommProtocol ) )
-  , mGpsConnection( std::make_unique<QgsNmeaConnection>( mSocket ) )
 {
   connect( mSocket, &QBluetoothSocket::stateChanged, this, &BluetoothReceiver::setSocketState );
 #if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
