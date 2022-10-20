@@ -397,16 +397,16 @@ Page {
             anchors.fill: parent
             clip: true
 
-          ColumnLayout {
+            ColumnLayout {
               id: positioningGrid
               width: parent.parent.width
               spacing: 10
 
-            Loader {
-                Layout.fillWidth: true
-                active: withBluetooth
-                source: "qrc:/qml/BluetoothDeviceChooser.qml"
-            }
+              Loader {
+                  Layout.fillWidth: true
+                  active: withBluetooth
+                  source: "qrc:/qml/BluetoothDeviceChooser.qml"
+              }
 
               GridLayout {
                   Layout.fillWidth: true
