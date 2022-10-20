@@ -20,6 +20,7 @@
 #include "internalgnssreceiver.h"
 #include "positioning.h"
 #include "positioningutils.h"
+#include "socketreceiver.h"
 
 Positioning::Positioning( QObject *parent )
   : QObject( parent )
@@ -120,7 +121,8 @@ void Positioning::setupDevice()
 
   if ( mDeviceId.isEmpty() )
   {
-    mReceiver = std::make_unique<InternalGnssReceiver>( this );
+    // mReceiver = std::make_unique<InternalGnssReceiver>( this );
+    mReceiver = std::make_unique<SocketReceiver>( "localhost", 12008, this );
   }
   else
   {

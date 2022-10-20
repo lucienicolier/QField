@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <QTimer>
 
 /**
  * The sockethreceiver connects to a device and feeds the QgsNmeaConnection over a socket.
@@ -36,7 +37,13 @@ class SocketReceiver : public NmeaReceiver
     explicit SocketReceiver( const QString &address = QString(), const int port = 0, QObject *parent = nullptr );
 
   private:
-    QTcpSocket mSocket;
+    QTcpSocket *mSocket = nullptr;
+    QString mAddress;
+    int mPort = 0;
+    QTimer mReconnectTimer;
+
+  private slots:
+    void onStateChanged( QAbstractSocket::SocketState socketState );
 };
 
-#endif // BLUETOOTHRECEIVER_H
+#endif // SOCKETRECEIVER_H

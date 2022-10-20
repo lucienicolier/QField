@@ -20,6 +20,24 @@
 
 SocketReceiver::SocketReceiver( const QString &address, const int port, QObject *parent )
   : NmeaReceiver( parent )
+  , mAddress( address )
+  , mPort( port )
 {
-  mSocket.connectToHost( address, port, QTcpSocket::ReadOnly );
+  mSocket = new QTcpSocket();
+  connect( mSocket, &QTcpSocket::stateChanged, this, &SocketReceiver::onStateChanged );
+  mReconnectTimer.setSingleShot( true );
+  connect( &mReconnectTimer, &QTimer::timeout, this, [this]() { mSocket->connectToHost( mAddress, mPort, QTcpSocket::ReadOnly ); } );
+  mSocket->connectToHost( mAddress, mPort, QTcpSocket::ReadOnly );
+  setValid( true );
+  initNmeaConnection( mSocket );
+}
+
+void SocketReceiver::onStateChanged( QAbstractSocket::SocketState socketState )
+{
+  qInfo() << "State changed " << socketState;
+  switch ( socketState )
+  {
+    case QAbstractSocket::UnconnectedState:
+      mReconnectTimer.start( 2000 );
+  }
 }

@@ -54,6 +54,9 @@ class AbstractGnssReceiver : public QObject
     void socketStateStringChanged( QString &socketStateString );
     void lastErrorChanged( QString &lastError );
 
+  protected:
+    GnssPositionInformation mLastGnssPositionInformation;
+
   private:
     friend class BluetoothReceiver;
     friend class InternalGnssReceiver;
@@ -62,7 +65,6 @@ class AbstractGnssReceiver : public QObject
     virtual void handleDisconnectDevice() {}
 
     bool mValid = false;
-    GnssPositionInformation mLastGnssPositionInformation;
     QAbstractSocket::SocketState mSocketState = QAbstractSocket::UnconnectedState;
     QString mSocketStateString;
     QString mLastError;

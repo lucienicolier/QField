@@ -58,7 +58,6 @@ class BluetoothReceiver : public NmeaReceiver
     void confirmPairing( const QBluetoothAddress &address, QString pin );
 #endif
 #endif
-    void stateChanged( const QgsGpsInformation &info );
     void setSocketState( const QBluetoothSocket::SocketState socketState );
 
   private:
@@ -78,7 +77,6 @@ class BluetoothReceiver : public NmeaReceiver
 
     std::unique_ptr<QBluetoothLocalDevice> mLocalDevice;
     QBluetoothSocket *mSocket = nullptr;
-    bool mLastGnssPositionValid = false;
 
     bool mDisconnecting = false;
     bool mConnectOnDisconnect;

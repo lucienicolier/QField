@@ -47,9 +47,14 @@ class NmeaReceiver : public AbstractGnssReceiver
     bool ellipsoidalElevation() const { return mEllipsoidalElevation; }
 
   protected:
-    std::unique_ptr<QgsNmeaConnection> mGpsConnection;
+    std::unique_ptr<QgsNmeaConnection> mNmeaConnection;
 
     bool mEllipsoidalElevation = true;
+
+    bool mLastGnssPositionValid = false;
+
+  private slots:
+    void stateChanged( const QgsGpsInformation &info );
 };
 
 #endif // BLUETOOTHRECEIVER_H
