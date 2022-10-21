@@ -12,8 +12,6 @@ log = os.path.join(pathlib.Path(__file__).parent.resolve(), "track.nmea")
 with open(log, "rb") as f:
     lines = f.readlines()
 
-print(lines)
-
 
 def work_thread(client):
     i = 0
@@ -27,6 +25,7 @@ def work_thread(client):
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
     sock.bind((host, port))
     sock.listen(5)  # we should never have more than one client
+    print(f"Listening on port {port}")
 
     client, addr = sock.accept()  # your script will block here waiting for a connection
     t = threading.Thread(target=work_thread, args=(client,))
