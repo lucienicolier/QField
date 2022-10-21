@@ -29,6 +29,7 @@ void NmeaReceiver::initNmeaConnection( QIODevice *ioDevice )
 
   //QgsGpsConnection state changed (received location string)
   connect( mNmeaConnection.get(), &QgsGpsConnection::stateChanged, this, &NmeaReceiver::stateChanged );
+  connect( mNmeaConnection.get(), &QgsNmeaConnection::nmeaSentenceReceived, this, []( const QString &sentence ) { qInfo() << sentence; } );
 }
 
 void NmeaReceiver::setEllipsoidalElevation( const bool ellipsoidalElevation )
