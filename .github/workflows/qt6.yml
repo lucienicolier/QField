@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - release-**
+      - m1
   pull_request:
   release:
     types: ['published']
@@ -77,6 +78,7 @@ jobs:
                 -B "${CMAKE_BUILD_DIR}" \
                 -G Xcode \
                 -T buildsystem=1 \
+                -D VCPKG_TARGET_TRIPLET=arm64-osx-release \
                 -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
                 -D WITH_VCPKG=ON \
                 -D WITH_SPIX=ON \
