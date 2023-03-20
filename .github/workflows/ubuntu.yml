@@ -26,6 +26,9 @@ jobs:
           sudo mk-build-deps --install --tool='apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes' debian/control
 
       - name: 🌋 Build
+        env:
+          NUGET_USERNAME: opengisch
+          NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           dpkg-buildpackage
 
