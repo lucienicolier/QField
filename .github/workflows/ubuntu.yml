@@ -22,7 +22,7 @@ jobs:
       - name: 🔨 Prepare build env
         run: |
           sudo apt-get update
-          sudo apt-get install -y devscripts
+          sudo apt-get install -y devscripts equivs
           sudo mk-build-deps --install --tool='apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes' debian/control
 
       - name: 🌋 Build
