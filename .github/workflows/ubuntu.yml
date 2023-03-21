@@ -39,3 +39,6 @@ jobs:
           name: build-logs
           path: |
             ${{ github.workspace }}/**/*.log
+
+      - uses: m-kuhn/action-tmate@patch-1
+        if: failure()
