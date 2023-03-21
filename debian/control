@@ -11,6 +11,7 @@ Build-Depends:
  git,
  libqt5sensors5-dev,
  libqt5serialport5-dev,
+ libqt5svg5-dev,
  libqt5webview5-dev,
  libzip-dev,
  libzxingcore-dev,
