@@ -48,5 +48,7 @@ jobs:
           path: |
             ${{ github.workspace }}/**/*.log
 
-      - uses: m-kuhn/action-tmate@patch-1
-        if: failure()
+      - uses: actions/upload-artifact@v3
+        with:
+          name: debian-package
+          path: ${{ github.workspace }}/../*.deb
