@@ -36,6 +36,22 @@ Homepage: https://qfield.org
 
 Package: qfield
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ qml-module-qtsensors,
+ qml-module-qtquick-controls2,
+ qml-module-qt-labs-settings,
+ qml-module-qtquick-window2,
+ qml-module-qtqml,
+ qml-module-qtquick2,
+ qml-module-qtquick-layouts,
+ qml-module-qtwebview,
+ qml-module-qtcharts,
+ qml-module-qtgraphicaleffects,
+ qml-module-qtmultimedia,
+ qml-module-qtquick-shapes,
+ qml-module-qt-labs-calendar,
+ qml-module-qtquick-particles2
 Description: A touch friendly and field work optimized app based on QGIS
  A simplified touch optimized interface for QGIS in the field.
