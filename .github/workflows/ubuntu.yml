@@ -39,6 +39,8 @@ jobs:
           NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           dpkg-buildpackage
+          mkdir packages
+          mv ../*.deb packages
 
       - name: 📑 Upload dep build logs
         uses: actions/upload-artifact@v3
@@ -51,4 +53,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: debian-package
-          path: ${{ github.workspace }}/../*.deb
+          path: ${{ github.workspace }}/packages/*.deb
