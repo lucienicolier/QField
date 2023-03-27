@@ -26,6 +26,7 @@ override_dh_auto_configure:
 	-D WITH_VCPKG=ON \
 	-D SYSTEM_QT=ON \
 	-D ENABLE_TESTS=OFF \
+	-D CMAKE_INSTALL_PREFIX=/opt/qfield \
 	-D NUGET_USERNAME=${NUGET_USERNAME} \
 	-D NUGET_TOKEN=${NUGET_TOKEN}
 
